@@ -78,7 +78,6 @@ const techIcons: Record<string, { slug?: string; color: string }> = {
   Microservices: { color: "#e8f6f1" },
   "Clean Architecture": { color: "#f2eaff" },
   CQRS: { color: "#fff5df" },
-  SQL: { color: "#ffeded" },
   "Stored Procedures": { color: "#e8f1ff" },
   Indexing: { color: "#edf7eb" },
   "Query Optimization": { color: "#e8f6f1" },
