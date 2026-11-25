@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* 1. We manually add the dark mode variant */
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline {
+@theme {
+  /* --- Fonts --- */
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  /* --- Brand Colors --- */
+  --color-orange-50: #fff4ed;
+  --color-orange-100: #ffe6de;
+  --color-orange-200: #ffd0c0;
+  --color-orange-300: #ffb58a;
+  --color-orange-400: #ff8840;
+  --color-orange-500: #ff6500;
+  --color-orange-600: #e35200;
+  --color-orange-700: #b23f00;
+  --color-orange-800: #7a2b00;
+  --color-orange-900: #4b1a00;
+
+  --color-black-50: #f6f6f6;
+  --color-black-100: #e0e0e0;
+  --color-black-200: #b6b6b6;
+  --color-black-300: #8a8a8a;
+  --color-black-400: #545454;
+  --color-black-500: #333333;
+  --color-black-600: #1f1f1f;
+  --color-black-700: #141414;
+  --color-black-800: #050505;
+  --color-black-900: #000000;
+
+  /* --- Semantic Colors --- */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* --- Animations (Manual fix for plugin issues) --- */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from { height: 0 }
+    to { height: var(--radix-accordion-content-height) }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height) }
+    to { height: 0 }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* --- Theme Variables --- */
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+  --card: #ffffff;
+  --card-foreground: #111111;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
+  --primary: #ff6500;
+  --primary-foreground: #ffffff;
+  --secondary: #f6f6f6;
+  --secondary-foreground: #111111;
+  --muted: #f6f6f6;
+  --muted-foreground: #545454;
+  --accent: #f6f6f6;
+  --accent-foreground: #111111;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e0e0e0;
+  --input: #e0e0e0;
+  --ring: #ff6500;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: #050505;
+  --foreground: #f6f6f6;
+  --card: #141414;
+  --card-foreground: #f6f6f6;
+  --popover: #141414;
+  --popover-foreground: #f6f6f6;
+  --primary: #ff6500;
+  --primary-foreground: #ffffff;
+  --secondary: #1f1f1f;
+  --secondary-foreground: #f6f6f6;
+  --muted: #1f1f1f;
+  --muted-foreground: #b6b6b6;
+  --accent: #1f1f1f;
+  --accent-foreground: #f6f6f6;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #f6f6f6;
+  --border: #333333;
+  --input: #333333;
+  --ring: #d95600;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
 }
