@@ -5,7 +5,14 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Send, CheckCircle2, AlertCircle } from "lucide-react"; // Added AlertCircle
+import {
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  Mail,
+  Copy,
+  Check,
+} from "lucide-react";
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,7 +21,26 @@ export function Contact() {
 
   // YOUR FORMSPREE ID HERE
   // Replace this URL with the one you got from step 1
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mbdlnezr"; 
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mbdlnezr";
+
+  const EMAIL_ADDRESS = "pavithmadushan@gmail.com";
+
+  const [isCopied, setIsCopied] = useState(false);
+
+  async function handleCopyEmail() {
+    try {
+      await navigator.clipboard.writeText(EMAIL_ADDRESS);
+
+      setIsCopied(true);
+
+      // Reset the button after 2 seconds
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } catch (error) {
+      console.error("Unable to copy email address:", error);
+    }
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault(); // Stop page reload
@@ -24,7 +50,7 @@ export function Contact() {
     // 1. Collect Form Data
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    
+
     // DEBUG: Log what we are sending
     console.log("Attempting to send data:", data);
 
@@ -34,8 +60,8 @@ export function Contact() {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
       });
 
@@ -46,7 +72,7 @@ export function Contact() {
         setIsSuccess(true);
         // Clear form (optional)
         (e.target as HTMLFormElement).reset();
-        
+
         // Reset success message after 5 seconds
         setTimeout(() => setIsSuccess(false), 5000);
       } else {
@@ -67,43 +93,83 @@ export function Contact() {
   return (
     <section id="contact" className="container py-20 lg:py-32">
       <div className="mx-auto max-w-4xl rounded-3xl bg-muted/30 px-6 py-12 md:px-12 md:py-20 dark:bg-card/30">
-        
         {/* ... Title and Description (Same as before) ... */}
         <div className="flex flex-col items-center text-center">
-             {/* ... (Keep your motion.h2 and motion.p here) ... */}
-             <h2 className="text-3xl font-bold">Let's Develop Together</h2>
-             <p className="mt-6 mb-10 max-w-lg text-muted-foreground">
-                Turn your ideas into reality!
-             </p>
+          {/* ... (Keep your motion.h2 and motion.p here) ... */}
+          <h2 className="text-3xl font-bold">Let's Develop Together</h2>
+
+          <p className="mt-6 mb-6 max-w-lg text-muted-foreground">
+            Turn your ideas into reality!
+          </p>
+
+          {/* Direct Email Contact */}
+          <div className="mb-10 flex w-full max-w-md items-center justify-between gap-3 rounded-xl border border-border/60 bg-background/70 p-4 shadow-sm transition-all hover:border-primary/40">
+            {/* Email Address */}
+            <a
+              href={`mailto:${EMAIL_ADDRESS}`}
+              className="group flex min-w-0 items-center gap-3"
+            >
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
+                <Mail className="h-5 w-5" />
+              </div>
+
+              <div className="min-w-0 text-left">
+                <p className="text-xs text-muted-foreground">Prefer email?</p>
+
+                <p className="truncate text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
+                  {EMAIL_ADDRESS}
+                </p>
+              </div>
+            </a>
+
+            {/* Copy Email Button */}
+            <button
+              type="button"
+              onClick={handleCopyEmail}
+              aria-label={isCopied ? "Email copied" : "Copy email address"}
+              title={isCopied ? "Copied!" : "Copy email address"}
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-all hover:border-primary hover:bg-primary/10 hover:text-primary"
+            >
+              {isCopied ? (
+                <Check className="h-4 w-4 text-green-500" />
+              ) : (
+                <Copy className="h-4 w-4" />
+              )}
+            </button>
+          </div>
+
+          <p className="mb-6 text-sm text-muted-foreground">
+            Or send me a message using the form below.
+          </p>
 
           <motion.form
             onSubmit={handleSubmit}
             className="w-full max-w-md space-y-4 text-left" // Added text-left for error msg
           >
             <div className="relative">
-              <Input 
+              <Input
                 name="name" // IMPORTANT: Formspree needs 'name' attributes
-                type="text" 
-                placeholder="Your Name" 
+                type="text"
+                placeholder="Your Name"
                 required
                 className="h-12 bg-background/50 backdrop-blur"
               />
             </div>
 
             <div className="relative">
-              <Input 
+              <Input
                 name="email" // IMPORTANT
-                type="email" 
-                placeholder="Your Email" 
+                type="email"
+                placeholder="Your Email"
                 required
                 className="h-12 bg-background/50 backdrop-blur"
               />
             </div>
 
             <div className="relative">
-              <Textarea 
+              <Textarea
                 name="message" // IMPORTANT
-                placeholder="Your Message" 
+                placeholder="Your Message"
                 required
                 className="min-h-[120px] resize-none bg-background/50 backdrop-blur"
               />
@@ -117,14 +183,14 @@ export function Contact() {
               </div>
             )}
 
-            <Button 
-              type="submit" 
-              size="lg" 
+            <Button
+              type="submit"
+              size="lg"
               className="w-full h-12"
               disabled={isSubmitting || isSuccess}
             >
               {isSubmitting ? (
-                 "Sending..."
+                "Sending..."
               ) : isSuccess ? (
                 <span className="flex items-center gap-2 text-green-500 font-bold">
                   <CheckCircle2 className="h-5 w-5" /> Message Sent!
@@ -135,7 +201,6 @@ export function Contact() {
                 </span>
               )}
             </Button>
-
           </motion.form>
         </div>
       </div>

@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { 
-  Palette,      // For Graphic Design
-  Layout,       // For Web Design
-  Smartphone,   // For App Design
-  Figma         // For UI/UX (using Figma icon as proxy or standard LayoutDashboard)
+import {
+  Palette, // For Graphic Design
+  Layout, // For Web Design
+  Smartphone, // For App Design
+  Figma, // For UI/UX (using Figma icon as proxy or standard LayoutDashboard)
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TechStackBadge } from "@/components/shared/TechStackBadge";
@@ -49,7 +49,7 @@ const services = [
       "MongoDB",
       "Redis",
       "Indexing",
-      "Stored Procedures",      
+      "Stored Procedures",
       "Query Optimization",
       "Normalization",
     ],
@@ -57,14 +57,7 @@ const services = [
   },
   {
     title: "Cloud & DevOps",
-    technologies: [
-      "Git",
-      "Azure",
-      "AWS",
-      "CI/CD",
-      "Docker",
-      "Kubernetes",
-    ],
+    technologies: ["Git", "Azure", "AWS", "CI/CD", "Docker", "Kubernetes"],
     icon: <Palette className="h-10 w-10 text-primary" />,
   },
 ];
@@ -91,14 +84,18 @@ export function Services() {
     <section id="services" className="container py-20 lg:py-32">
       {/* Header */}
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Services</h2>
+        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          Technologies
+        </h2>
         <p className="mt-4 text-muted-foreground">
-          Lorem ipsum dolor sit amet consectetur. Tristique amet sed massa purus quis ipsum tellus. In aliquam sem at risus.
+          A fast learner with an adaptable mindset, constantly exploring
+          emerging technologies and quickly mastering new tools and technical
+          environments to build effective solutions.
         </p>
       </div>
 
       {/* Grid of Cards */}
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -112,7 +109,6 @@ export function Services() {
               Added 'group' class to handle hover states on child elements.
             */}
             <Card className="group relative h-full overflow-hidden border-border/50 bg-card/50 transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
-              
               {/* Optional: Glow effect inside card on hover */}
               <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 transition-all duration-500 group-hover:from-primary/5 group-hover:to-primary/10" />
 
@@ -123,15 +119,12 @@ export function Services() {
                 <CardTitle className="text-xl">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
-  <div className="flex flex-wrap gap-2">
-    {service.technologies.map((tech) => (
-      <TechStackBadge
-        key={tech}
-        name={tech}
-      />
-    ))}
-  </div>
-</CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {service.technologies.map((tech) => (
+                    <TechStackBadge key={tech} name={tech} />
+                  ))}
+                </div>
+              </CardContent>
             </Card>
           </motion.div>
         ))}
