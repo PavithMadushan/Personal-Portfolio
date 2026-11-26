@@ -10,29 +10,19 @@ const testimonials = [
   {
     name: "Lalindu Wenasara",
     role: "Software Engineer at Axiata Digital Labs",
-    image:
-      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=2574&auto=format&fit=crop",
-    text: "Lorem ipsum dolor sit amet consectetur. In enim cursus odio accumsan. Id leo urna velit neque mattis id tellus arcu condimentum. Augue dictum dolor elementum.",
+    image: "/testimonials/lalindu.jfif",
+    text: "Great attention to detail and clean code. It was a pleasure working with him on the backend integration. A true professional.",
   },
   {
     name: "Savindu Ilangakoon",
     role: "Analyst at CUBE Global LTD",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2574&auto=format&fit=crop",
+    image: "/testimonials/savindu.jfif",
     text: "I had the opportunity to work with Pavith at CUBE Global, and he was a great teammate. He is highly collaborative, dependable, and always approaches challenges with a positive attitude and strong analytical thinking. His excellent communication skills, willingness to help others, and commitment to delivering quality work made him a valuable member of the team. Alongside his solid technical skills in .NET, C#, Azure, and web technologies, he consistently demonstrated professionalism and a strong eagerness to learn. I highly recommend him for any software engineering role.",
-  },
-  {
-    name: "Michael Brown",
-    role: "Developer",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2574&auto=format&fit=crop",
-    text: "Great attention to detail and clean code. It was a pleasure working with him on the backend integration. A true professional.",
   },
   {
     name: "Binuri Lokubarana",
     role: "Former LCVP in AIESEC Colombo North",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2661&auto=format&fit=crop",
+    image: "/testimonials/binuri.jfif",
     text: "Pavith showcased exemplary leadership as the Team Leader and as a member of the Leadership Body.  His expertise is in Business-to-Business relations and Business-to-Customer relations having handled both sides of the line. Being highly engaging and developing his communication skills throughout the journey, he also empowered the members who worked with him by giving them the guidance needed to expand. Having had the opportunity to work with Pavith on multiple occasions, he goes above and beyond to ensure that his responsibilities are met. Working with Pavith had been a compelling experience and a learning for me as well..",
   },
 ];

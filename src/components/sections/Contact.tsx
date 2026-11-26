@@ -49,7 +49,16 @@ export function Contact() {
 
     // 1. Collect Form Data
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+
+      // Email metadata for Formspree
+      _replyto: formData.get("email"),
+      _subject: `New Portfolio Contact Message from ${formData.get("name")}`,
+    };
 
     // DEBUG: Log what we are sending
     console.log("Attempting to send data:", data);
