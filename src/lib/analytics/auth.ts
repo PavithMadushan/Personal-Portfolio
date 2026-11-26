@@ -1,11 +1,6 @@
-
 import "server-only";
 
-import {
-  createHash,
-  createHmac,
-  timingSafeEqual,
-} from "crypto";
+import { createHash, createHmac, timingSafeEqual } from "crypto";
 
 // Name of the browser cookie used for admin authentication.
 export const ADMIN_COOKIE_NAME = "analytics_admin_session";
@@ -30,7 +25,7 @@ function getSessionSecret(): string {
 
   if (secret.length < 32) {
     throw new Error(
-      "ANALYTICS_SESSION_SECRET must contain at least 32 characters."
+      "ANALYTICS_SESSION_SECRET must contain at least 32 characters.",
     );
   }
 
@@ -41,21 +36,16 @@ function getSessionSecret(): string {
 export function verifyAdminPassword(password: string): boolean {
   const expectedPassword = getSecret("ANALYTICS_ADMIN_PASSWORD");
 
-  const submittedHash = createHash("sha256")
-    .update(password)
-    .digest();
+  const submittedHash = createHash("sha256").update(password).digest();
 
-  const expectedHash = createHash("sha256")
-    .update(expectedPassword)
-    .digest();
+  const expectedHash = createHash("sha256").update(expectedPassword).digest();
 
   return timingSafeEqual(submittedHash, expectedHash);
 }
 
 // Create a signed session token containing its expiration time.
 export function createAdminSessionToken(): string {
-  const expiresAt =
-    Math.floor(Date.now() / 1000) + ADMIN_SESSION_DURATION;
+  const expiresAt = Math.floor(Date.now() / 1000) + ADMIN_SESSION_DURATION;
 
   const signature = createHmac("sha256", getSessionSecret())
     .update(String(expiresAt))
@@ -65,13 +55,12 @@ export function createAdminSessionToken(): string {
 }
 
 // Verify the session's signature and expiration time.
-export function verifyAdminSessionToken(
-  token: string | undefined
-): boolean {
+export function verifyAdminSessionToken(token: string | undefined): boolean {
   if (!token) return false;
 
   const [expiresAtString, signature] = token.split(".");
 
+  
   if (
     !expiresAtString ||
     !signature ||
