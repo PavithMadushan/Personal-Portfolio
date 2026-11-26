@@ -11,7 +11,10 @@ const UUID_REGEX =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 // Restrict text values received from the browser.
-function cleanText(value: unknown, maxLength: number): string | null {
+function cleanText(
+  value: unknown,
+  maxLength: number
+): string | null {
   if (typeof value !== "string") return null;
 
   const cleaned = value.trim();
@@ -61,6 +64,7 @@ export async function POST(request: NextRequest) {
 
     try {
       const context = getContext();
+
       country = context.geo?.country?.name ?? null;
       countryCode = context.geo?.country?.code ?? null;
       region = context.geo?.subdivision?.name ?? null;
@@ -144,12 +148,16 @@ export async function POST(request: NextRequest) {
         headers: { "Cache-Control": "no-store" },
       }
     );
+
   } catch (error) {
     // Keep detailed errors in server logs, not in the public response.
     console.error("Analytics API error:", error);
 
     return NextResponse.json(
-      { success: false, message: "Unable to record analytics." },
+      {
+        success: false,
+        message: "Unable to record analytics.",
+      },
       { status: 500 }
     );
   }
