@@ -4,6 +4,7 @@ import "./globals.css";
 import { AppProviders } from "./providers";
 import { Navbar } from "@/components/shared/Navbar";
 import { MovingShapes } from "@/components/ui/moving-shapes";
+import { AnalyticsTracker } from "@/components/shared/AnalyticsTracker";
 
 // 1. Define the Font
 const poppins = Poppins({
@@ -28,12 +29,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={poppins.variable}>
       <body className="min-h-screen bg-background font-sans antialiased">
         <AppProviders>
-          {/* <MovingShapes /> */}
-          <Navbar />
-          <main className="pt-16">
-            {children}
-          </main>
-        </AppProviders>
+  {/* Track anonymous visitor sessions and page views */}
+  <AnalyticsTracker />
+
+  {/* <MovingShapes /> */}
+  <Navbar />
+  <main className="pt-16">
+    {children}
+  </main>
+</AppProviders>
       </body>
     </html>
   );
