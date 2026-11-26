@@ -1,3 +1,6 @@
+
+import "server-only";
+
 import {
   createHash,
   createHmac,
@@ -10,10 +13,22 @@ export const ADMIN_COOKIE_NAME = "analytics_admin_session";
 // Keep admin sessions valid for 24 hours.
 export const ADMIN_SESSION_DURATION = 60 * 60 * 24;
 
-function getSessionSecret(): string {
-  const secret = process.env.ANALYTICS_SESSION_SECRET;
+// Read secrets dynamically so their values are not statically
+// substituted into generated JavaScript during the build.
+function getSecret(name: string): string {
+  const value = process.env[name];
 
-  if (!secret || secret.length < 32) {
+  if (!value) {
+    throw new Error(`${name} is not configured.`);
+  }
+
+  return value;
+}
+
+function getSessionSecret(): string {
+  const secret = getSecret("ANALYTICS_SESSION_SECRET");
+
+  if (secret.length < 32) {
     throw new Error(
       "ANALYTICS_SESSION_SECRET must contain at least 32 characters."
     );
@@ -24,11 +39,7 @@ function getSessionSecret(): string {
 
 // Compare passwords without a direct timing-sensitive string comparison.
 export function verifyAdminPassword(password: string): boolean {
-  const expectedPassword = process.env.ANALYTICS_ADMIN_PASSWORD;
-
-  if (!expectedPassword) {
-    throw new Error("ANALYTICS_ADMIN_PASSWORD is not configured.");
-  }
+  const expectedPassword = getSecret("ANALYTICS_ADMIN_PASSWORD");
 
   const submittedHash = createHash("sha256")
     .update(password)
@@ -72,7 +83,10 @@ export function verifyAdminSessionToken(
 
   const expiresAt = Number(expiresAtString);
 
-  if (!Number.isSafeInteger(expiresAt) || expiresAt <= Math.floor(Date.now() / 1000)) {
+  if (
+    !Number.isSafeInteger(expiresAt) ||
+    expiresAt <= Math.floor(Date.now() / 1000)
+  ) {
     return false;
   }
 
