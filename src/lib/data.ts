@@ -130,7 +130,7 @@ export interface Project {
     slug: "scalable-ecommerce-microservices",
     title: "Scalable E-commerce Microservices Platform",
     category: "Software Development",
-    image: "/hero-placeholder.jpg",
+    image: "/projects/cleanarchi.png",
     description:
       "A scalable e-commerce platform featuring product, cart, discount, and order management. Developed using Microservices, Clean Architecture, and CQRS, with RabbitMQ and gRPC for service communication. Containerized and orchestrated using Docker, Kubernetes, and Helm, with Ocelot API Gateway.",
     technologies: [
