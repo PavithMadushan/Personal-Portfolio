@@ -95,12 +95,24 @@ export function Hero() {
         </motion.p>
 
         <motion.div variants={fadeInUp} className="mt-8 flex gap-4">
-          <Button size="lg" className="bg-primary hover:bg-orange-600">
-            Hire Me
-          </Button>
-          <Button size="lg" variant="outline">
-            Contact
-          </Button>
+          <Button
+  asChild
+  size="lg"
+  className="bg-primary hover:bg-orange-600"
+>
+  <a href="mailto:pavithmadushan@gmail.com?subject=Hiring%20Inquiry">
+    Hire Me
+  </a>
+</Button>
+          <Button
+  asChild
+  size="lg"
+  variant="outline"
+>
+  <a href="#contact">
+    Contact
+  </a>
+</Button>
         </motion.div>
       </motion.div>
 

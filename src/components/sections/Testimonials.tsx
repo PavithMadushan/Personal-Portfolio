@@ -31,7 +31,7 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="container py-20 lg:py-32 overflow-hidden"
+      className="container py-20 lg:py-16 overflow-hidden"
     >
       <div className="mx-auto max-w-2xl text-center mb-16">
         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">

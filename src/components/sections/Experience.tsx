@@ -101,7 +101,7 @@ export function Experience() {
   });
 
   return (
-    <section id="experience" className="container py-20 lg:py-32">
+    <section id="experience" className="container py-20 lg:py-16">
       <h2 className="mb-16 text-center text-3xl font-bold tracking-tight sm:text-4xl">
         My <span className="text-primary">Experience</span>
       </h2>

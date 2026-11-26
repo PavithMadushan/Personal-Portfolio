@@ -14,7 +14,7 @@ const skills = [
 
 export function About() {
   return (
-    <section id="about" className="container px-4 sm:px-6 py-20 lg:py-32">
+    <section id="about" className="container px-4 sm:px-6 py-20 lg:py-16">
       <div className="flex flex-col items-center gap-12 md:flex-row md:justify-between">
         
         {/* LEFT SIDE: Image */}

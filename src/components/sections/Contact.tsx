@@ -100,7 +100,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="container py-20 lg:py-32">
+    <section id="contact" className="container py-20 lg:py-16">
       <div className="mx-auto max-w-4xl rounded-3xl bg-muted/30 px-6 py-12 md:px-12 md:py-20 dark:bg-card/30">
         {/* ... Title and Description (Same as before) ... */}
         <div className="flex flex-col items-center text-center">

@@ -26,11 +26,11 @@ export function Projects() {
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <section id="projects" className="container py-20 lg:py-32">
+    <section id="projects" className="container py-20 lg:py-16">
       <div className="flex flex-col items-center gap-4 text-center">
         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">My Projects</h2>
         <p className="max-w-2xl text-muted-foreground">
-          Lorem ipsum dolor sit amet consectetur. Mollis erat duis aliquam mauris est risus lectus.
+          Every project tells a story of turning ideas into reality. Explore the solutions I've built, the challenges I've tackled, and the technologies I've brought together to make things happen.
         </p>
       </div>
 
