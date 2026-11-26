@@ -28,8 +28,8 @@ export function About() {
           <div className="relative h-72 w-72 md:h-96 md:w-96">
             <div className="absolute inset-0 rounded-full border-4 border-primary/20 bg-muted overflow-hidden">
                <Image 
-                 src="/hero-placeholder.jpg" // Put a different image here if you have one
-                 alt="About Fawzi" 
+                 src="/my/myback.png" // Put a different image here if you have one
+                 alt="Pavith Rajapaksha" 
                  fill 
                  className="object-cover"
                />

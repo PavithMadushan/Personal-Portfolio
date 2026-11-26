@@ -131,7 +131,7 @@ export function Hero() {
               src="/hero-placeholder.jpg"
               alt="Pavith Rajapaksha"
               fill
-              className="object-cover"
+              className="object-cover object-[center_30%]"
               priority
             />
           </div>

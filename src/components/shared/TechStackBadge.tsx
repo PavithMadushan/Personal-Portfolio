@@ -26,7 +26,7 @@ const techIcons: Record<string, { slug?: string; color: string }> = {
   Git: { slug: "git", color: "#fff0e9" },
   MSSQL: { slug: "microsoftsqlserver", color: "#ffeded" },
   Azure: { slug: "microsoftazure", color: "#e8f3ff" },
-  OpenAI: { slug: "openai", color: "#e8f6f1" },
+  OpenAI: { slug: "Chromatic", color: "#e8f6f1" },
   PL_SQL: { slug: "oracle", color: "#fff0f0" },
   Expressjs: { slug: "express", color: "#eeeeee" },
   MongoDB: { slug: "mongodb", color: "#edf7eb" },
