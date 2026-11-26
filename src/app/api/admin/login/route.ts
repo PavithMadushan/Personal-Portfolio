@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+
 import {
   ADMIN_COOKIE_NAME,
   ADMIN_SESSION_DURATION,
   createAdminSessionToken,
-  verifyAdminPassword,
 } from "@/lib/analytics/auth";
+
+import { verifyAdminPassword } from "@/lib/analytics/password";
+
 
 export const runtime = "nodejs";
 
