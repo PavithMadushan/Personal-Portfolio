@@ -8,8 +8,17 @@ export interface Project {
   technologies: string[];
   liveUrl?: string;
   githubUrl?: string;
+
+  // Optional project screenshots
   gallery?: string[];
-}  
+
+  // Optional detailed technical insights
+  keyInsights?: {
+    title: string;
+    description: string;
+    details?: string[];
+  }[];
+}
   
   export const projects: Project[] = [
   {
@@ -29,6 +38,45 @@ export interface Project {
       "Azure Communication Services",
       "Azure Email Service",
     ],
+    keyInsights: [
+  {
+    title: "Smart state-machine architecture",
+    description:
+      "Implemented a configurable, JSON-driven conversational flow using default_script.json. Each conversational state and its transitions are dynamically managed at runtime through a dedicated ChatStateManager.",
+    details: [
+      "Greeting",
+      "CantFindTicket",
+      "ReceiptInfo",
+      "ClarifyFlows",
+      "Escalation",
+    ],
+  },
+  {
+    title: "AI-powered intent recognition",
+    description:
+      "Built a flexible intent recognition layer using IIntentRecognizerService. Integrated Azure OpenAI (GPT-4o-mini) to classify user inputs, with a rule-based fallback mechanism to improve reliability.",
+  },
+  {
+    title: "Intelligent clarification handling",
+    description:
+      "Designed a ClarificationHelper to handle vague inputs such as ticket or receipt. It guides users towards the correct conversational flow with clear options instead of allowing incorrect intent classification.",
+  },
+  {
+    title: "Voice-enabled kiosk UI",
+    description:
+      "Developed a modern UWP dialog interface supporting chat bubbles, dynamic buttons, live transcription, and seamless voice interaction using Speech-to-Text and Text-to-Speech.",
+  },
+  {
+    title: "Human handoff when needed",
+    description:
+      "Integrated Azure Communication Services to support escalation to a live support agent when automated assistance is insufficient.",
+  },
+  {
+    title: "Observability and diagnostics",
+    description:
+      "Implemented Serilog logging to track user intents, state transitions, and escalation events, supporting diagnostics and continuous improvement.",
+  },
+],
   },
   {
     id: 4,

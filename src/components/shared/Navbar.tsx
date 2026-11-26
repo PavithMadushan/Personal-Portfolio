@@ -24,8 +24,8 @@ export function Navbar() {
     <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold tracking-tight">
-          My<span className="text-primary">Portfolio</span>
+        <Link href="/" className="text-xl font-bold tracking-tight ml-4">
+          My<span className="text-primary ml-1">Portfolio</span>
         </Link>
 
         {/* Desktop Navigation */}
