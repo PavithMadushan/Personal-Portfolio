@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { VisitorSessionsTable } from "@/components/admin/VisitorSessionsTable";
 
 // ---------------------------------------------
 // Types matching the JSON returned by Supabase
@@ -380,6 +381,8 @@ export function AdminAnalyticsDashboard() {
           value: item.sessions,
         })) ?? []}
       />
+
+      <VisitorSessionsTable />
 
     </div>
   );
